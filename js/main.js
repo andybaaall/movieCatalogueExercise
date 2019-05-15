@@ -4,7 +4,7 @@ var movies = [
     title: "Aguirre",
     year: 1972,
     directors: ["Werner Herzog"], // this is an array bc we might want to have films later with multiple directors
-    bio: "In the 16th century, the ruthless and insane Don Lope de Aguirre leads a Spanish expedition in search of El Dorado.",
+    bio: "Aguirre, the Wrath of God (German: Aguirre, der Zorn Gottes), known in the UK as Aguirre, Wrath of God, is a 1972 West German epic historical drama film written and directed by Werner Herzog. Klaus Kinski stars in the title role. The soundtrack was composed and performed by West German progressive/Krautrock band Popol Vuh. The story follows the travels of Spanish soldier Lope de Aguirre, who leads a group of conquistadores down the Amazon River in South America in search of the legendary city of gold, El Dorado.",
     length: 95,
     poster: "aguirre.jpg",
     genre: ["Historical" , "Psychological" , "True Story"]
@@ -14,7 +14,7 @@ var movies = [
     title: "The Great Ecstacy of Woodcarver Steiner",
     year: 1974,
     directors: ["Werner Herzog"],
-    bio: "A study of the psychology of a champion ski-jumper, whose full-time occupation is carpentry.",
+    bio: "The Great Ecstasy of Woodcarver Steiner (German: Die große Ekstase des Bildschnitzers Steiner) is a 1974 documentary film by German filmmaker Werner Herzog. It is about Walter Steiner, a celebrated ski jumper of his era who worked as a carpenter for his full-time occupation. Showcased is Steiner's quest for a world record in ski flying, as well as the dangers involved in the sport. Herzog has called it 'one of my most important films'.",
     length: 45,
     poster: "theGreatEcstasy.jpg",
     genre: ["Documentary" , "Sports" , "Woodwork"]
@@ -24,7 +24,7 @@ var movies = [
     title: "The Enigma of Kaspar Hauser",
     year: 1974,
     directors: ["Werner Herzog"],
-    bio: "Herzog's film is based upon the true and mysterious story of Kaspar Hauser, a young man who suddenly appeared in Nuremberg in 1828, barely able to talk or walk, and bearing a strange note.",
+    bio: "The Enigma of Kaspar Hauser (German: Jeder für sich und Gott gegen alle; lit. Every Man for Himself and God Against All) is a 1974 West German drama film written and directed by Werner Herzog and starring Bruno Schleinstein (credited as Bruno S.) and Walter Ladengast. The film closely follows the real story of foundling Kaspar Hauser, using the text of actual letters found with Hauser.",
     length: 105,
     poster: "kasparHauser.jpg",
     genre: ["Documentary" , "Historical"]
@@ -34,7 +34,7 @@ var movies = [
     title: "How Much Wood Would a Woodchuck Chuck...",
     year: 1976,
     directors: ["Werner Herzog"],
-    bio: "Herzog examines the world championships for cattle auctioneers, his fascination with a language created by an economic system, and compares it to the lifestyle of the Amish, who live nearby.",
+    bio: "How Much Wood Would a Woodchuck Chuck (German: Beobachtungen zu einer neuen Sprache, literally 'Observations of a New Language') is a 1976 documentary film by German director Werner Herzog, produced by Werner Herzog Filmproduktion. It is a 44-minute film documenting the World Livestock Auctioneer Championship held in New Holland, Pennsylvania. The film also contains a section about the Amish and shows Amish speaking Pennsylvania German.",
     length: 44,
     poster: "4Shorts.jpg",
     genre: ["Documentary" , "Language" , "Cattle"]
@@ -44,12 +44,17 @@ var movies = [
     title: "Heart of Glass ",
     year: 1976,
     directors: ["Werner Herzog"],
-    bio: "The foreman of a small village glassworks dies without revealing the secret to the famous \"Ruby Glass\".",
+    bio: "Heart of Glass (German: Herz aus Glas) is a 1976 German film directed and produced by Werner Herzog, set in 18th century Bavaria. The film was written by Herzog, based partly on a story by Herbert Achternbusch. The main character is Hias, based on the legendary Bavarian prophet Mühlhiasl.",
     length: 94,
     poster: "heartOfGlass.jpg",
     genre: ["Documentary" , "Glassworks" , "Aching Nostalgia"]
   }
 ];
+
+// -----------------------------------------------------------------------------------------------------------------------------------
+// RENDERING THE MOVIE CARDS' CONTENT
+// -----------------------------------------------------------------------------------------------------------------------------------
+
 
 // console.log(movies);
 var moviesList = document.getElementById("moviesList");
@@ -61,8 +66,8 @@ for (var i = 0; i < movies.length; i++) {
   // document.getElementById("moviesList").innerHTML += "<p>" + movie.title + "</p>"
   // (bootstrap wants <p> tags to display as flex, so it gets pretty weird)
 
-//here's one way we can do this: -----------------------------------------------
-//------------------------------------------------------------------------------
+//here's one way we can do this: -----------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------
   // moviesList.innerHTML += "<div class='col-12 col-sm-6 col-md-4'>";
   //   // this won't work if you don't use +=
   //   moviesList.innerHTML += "<div class='card'>";
@@ -72,14 +77,14 @@ for (var i = 0; i < movies.length; i++) {
   // moviesList.innerHTML += "</div>";
 
 //here's another way we can do this (still using innerHTML, but this time in a variable):
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------
     var genreClass = "";
 
     if(movie.genre[0] === "Historical"){
     genreClass = "border-primary";
     // and we could store more variables here, like 'var genreContents = "this is a heist movie"'
-    } else if (movie.genre[0] === "Docmentary") {
-      genreClass = "border-secondary";
+    } else if (movie.genre[0] === "Documentary") {
+      genreClass = "border-success";
       // maybe something like 'var genreContents = "this is a seige movie"'
       // or even other styles, like 'background-color: $actionMovie;'
     }
@@ -90,8 +95,8 @@ for (var i = 0; i < movies.length; i++) {
 
     var movieCard = "<div class='col-12 col-sm-6 col-md-3' m-b-3 text-center>";
           // onclick lives here:
-          // movieCard += "<div class = 'card movieThumb " + genreClass + " ' onclick='showMoreMovie();'>";
-          movieCard += "<div class = 'card movieThumb movieThumb2" + genreClass + " '>";
+          movieCard += "<div class = 'card movieThumb " + genreClass + " ' onclick='showMoreMovie(" + movie.id + ");'>";
+          // movieCard += "<div class = 'card movieThumb movieThumb2 " + genreClass + " ' data-id='" + movie.id + "' >";
             movieCard += "  <img src='images/posters/" + movie.poster + "' class='card-img-top' alt=''>"
             movieCard += "<div class = 'card-body'>";
               movieCard += "<h5 class = 'card-title'>" + movie.title + "</h5>";
@@ -102,8 +107,8 @@ for (var i = 0; i < movies.length; i++) {
     moviesList.innerHTML += movieCard;
     // console.log(movieCard); // this basically generates a giant string
 
-//and here's yet another way we can do this: -----------------------------------
-//------------------------------------------------------------------------------
+//and here's yet another way we can do this: -----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------
   // var columns = document.createElement("div");
   // var columnsAttr = document.createAttribute("class");
   // columnsAttr.value = "col-12 col-sm-6 col-md-4";
@@ -136,20 +141,61 @@ for (var i = 0; i < movies.length; i++) {
   // so we're creating elements with createElement, giving them attributes with createAttribute and setAttributeNode, and then nesting them inside existing elements using appendChild.
 }
 
-function showMoreMovie(){
-  // console.log('got a click');
+// -----------------------------------------------------------------------------------------------------------------------------------
+// OPENING AND CLOSING THE OVERLAY - and now RENDERING ITS CONTENT
+// -----------------------------------------------------------------------------------------------------------------------------------
+
+
+function showMoreMovie(movieNumber){
+  var singleMovie;
+
+  // console.log(movieNumber);
+  for (var i = 0; i < movies.length; i++) {
+
+    if(movies[i].id === movieNumber){
+      // movieNumber is what we're using to stand in for whatever we're passing in
+      // which is going to be movie.id (or movies[i].id)
+      // console.log(movies[i]);
+      singleMovie = movies[i];
+      break;
+      // wheras return gets us out of a function, break stops a loop. Nothing will run after you tell a loop to break
+      // ... good thing we redefined singleMovie before we broke our loop!
+    }
+  }
+
+  // console.log(singleMovie);
+  // console.log(singleMovie.title);
+
+  document.getElementById("posterImage").src = "images/posters/" + singleMovie.poster;
+  document.getElementById("movieTitle").innerText = singleMovie.title;
+
+  // load the contents first, then render it, so it all displays at the same time!
   document.getElementById("overlay").style.display = "flex";
   document.body.style.overflow = "hidden";
 }
 
+
+// movieThumb2 method ---------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------------------------
+
+
 var movieThumbnails = document.getElementsByClassName("movieThumb2");
-// console.log(movieThumbnails);
+
 for (var i = 0; i < movieThumbnails.length; i++) {
   // console.log(movieThumbnails[i]);
+  // console.log(movieThumbnails[i].dataset);    // the HTML dataset object is freakin' cool
+  // console.log(movieThumbnails[i].dataset.id);
+
+  // var id = parseInt(movieThumbnails[i].dataset.id);
+  // console.log(id);
+
   // movieThumbnails[i].onclick = showMoreMovie;
     // we omit the brackets because we're calling a function that's bound to an event handler. Who can say why.
+
   movieThumbnails[i].onclick = function(){
-    showMoreMovie();
+    var id = parseInt(this.dataset.id);
+    showMoreMovie(id);
+    console.log(id);
   }
 }
 
@@ -157,3 +203,7 @@ document.getElementById("close").onclick = function(){
   document.getElementById("overlay").style.display = "none";
   document.body.style.overflow = "scroll";
 }
+
+// -----------------------------------------------------------------------------------------------------------------------------------
+// RENDERING THE OVERLAY CONTENT
+// -----------------------------------------------------------------------------------------------------------------------------------

@@ -1,5 +1,6 @@
 body , html {
   /* overflow: hidden; */
+  overflow: scroll;
 }
 
 
@@ -10,6 +11,7 @@ body , html {
 
 .overlay {
   display: none;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -21,8 +23,8 @@ body , html {
 
 }
   .overlayContent {
-    width: 70vw;
-    height: 60vh;
+    width: 60vw;
+    height: 40vh;
     background-color: white;
     padding: 1rem;
     position: relative;
@@ -33,12 +35,13 @@ body , html {
       top: 0;
       margin: 1rem;
       color: #8c8c8c;
+      z-index: 100;
     }
 
-    #close:hover {
-      cursor: pointer;
-      color: #c6c6c6;
-    }
+      #close:hover {
+        cursor: pointer;
+        color: #c6c6c6;
+      }
 
 /* card styling */
 /* ------------------------------------------------------------------------------------*/
