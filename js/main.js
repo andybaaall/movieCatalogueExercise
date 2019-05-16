@@ -3,7 +3,7 @@ var movies = [
     id: 1,
     title: "Aguirre",
     year: 1972,
-    directors: ["Werner Herzog"], // this is an array bc we might want to have films later with multiple directors
+    directors: ["Werner Herzog" , "test" , "test2"],
     bio: "Aguirre, the Wrath of God (German: Aguirre, der Zorn Gottes), known in the UK as Aguirre, Wrath of God, is a 1972 West German epic historical drama film written and directed by Werner Herzog. Klaus Kinski stars in the title role. The soundtrack was composed and performed by West German progressive/Krautrock band Popol Vuh. The story follows the travels of Spanish soldier Lope de Aguirre, who leads a group of conquistadores down the Amazon River in South America in search of the legendary city of gold, El Dorado.",
     length: 95,
     poster: "aguirre.jpg",
@@ -47,7 +47,7 @@ var movies = [
     bio: "Heart of Glass (German: Herz aus Glas) is a 1976 German film directed and produced by Werner Herzog, set in 18th century Bavaria. The film was written by Herzog, based partly on a story by Herbert Achternbusch. The main character is Hias, based on the legendary Bavarian prophet Mühlhiasl.",
     length: 94,
     poster: "heartOfGlass.jpg",
-    genre: ["Documentary" , "Glassworks" , "Aching Nostalgia"]
+    genre: ["Documentary" , "German Idealism" , "Aching Nostalgia"]
   }
 ];
 
@@ -142,14 +142,13 @@ for (var i = 0; i < movies.length; i++) {
 }
 
 // -----------------------------------------------------------------------------------------------------------------------------------
-// OPENING AND CLOSING THE OVERLAY - and now RENDERING ITS CONTENT
+// opening and closing the overlay, and rendering its content
 // -----------------------------------------------------------------------------------------------------------------------------------
-
 
 function showMoreMovie(movieNumber){
   var singleMovie;
-
   // console.log(movieNumber);
+
   for (var i = 0; i < movies.length; i++) {
 
     if(movies[i].id === movieNumber){
@@ -162,12 +161,64 @@ function showMoreMovie(movieNumber){
       // ... good thing we redefined singleMovie before we broke our loop!
     }
   }
-
   // console.log(singleMovie);
   // console.log(singleMovie.title);
 
+  // poster
   document.getElementById("posterImage").src = "images/posters/" + singleMovie.poster;
+  // bio
   document.getElementById("movieTitle").innerText = singleMovie.title;
+  // year
+  document.getElementById("movieYear").innerText = singleMovie.year;
+  // director(s)
+  document.getElementById("movieDirectors").innerHTML = "";
+
+  for (var i = 0; i < singleMovie.directors.length; i++) {
+    document.getElementById("movieDirectors").innerHTML += "<li class = 'list-inline-item'>" + singleMovie.directors[i] + "</li>";
+  }
+  // genres
+  document.getElementById("movieGenre").innerHTML = "";
+
+  var genreColor;
+
+  if (singleMovie.genre[i] == "Historical") {
+    genreColor = "badge-primary";
+  } else if (singleMovie.genre[i] == "Documentary"){
+    genreColor = "badge-success";
+  }
+
+  for (var i = 0; i < singleMovie.genre.length; i++) {
+    document.getElementById("movieGenre").innerHTML += "<span class = 'badge badge-pill " + genreColor + " mx-1'>" + singleMovie.genre[i] + "</span>";
+  }
+
+
+
+
+
+
+
+
+
+  // bio
+  document.getElementById("movieBio").innerText = singleMovie.bio;
+  // length
+  document.getElementById("movieLength").innerText = singleMovie.length;
+  // genre(s)
+  // for (var j = 0; j < singleMovie.genre.length; j++) {
+  //
+  // var genreColor;
+  //
+  // if (singleMovie.genre[j] === "Historical") {
+  //     genreColor = "badge-primary";
+  //   } else if(singleMovie.genre[j] === "Documentary") {
+  //     genreColor = "badge-success";
+  //   }
+  //
+  //
+  // console.log(singleMovie.genre);
+  // document.getElementById("movieGenre").innerHTML += "<li class = 'list-inline-item'>" + singleMovie.genre[j] + "</li>";
+  //
+  // }
 
   // load the contents first, then render it, so it all displays at the same time!
   document.getElementById("overlay").style.display = "flex";
@@ -199,11 +250,11 @@ for (var i = 0; i < movieThumbnails.length; i++) {
   }
 }
 
+// close button  ---------------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------------------------
+
+
 document.getElementById("close").onclick = function(){
   document.getElementById("overlay").style.display = "none";
   document.body.style.overflow = "scroll";
 }
-
-// -----------------------------------------------------------------------------------------------------------------------------------
-// RENDERING THE OVERLAY CONTENT
-// -----------------------------------------------------------------------------------------------------------------------------------
