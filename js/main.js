@@ -3,7 +3,7 @@ var movies = [
     id: 1,
     title: "Aguirre",
     year: 1972,
-    directors: ["Werner Herzog" , "test" , "test2"],
+    directors: ["Werner Herzog"],
     bio: "Aguirre, the Wrath of God (German: Aguirre, der Zorn Gottes), known in the UK as Aguirre, Wrath of God, is a 1972 West German epic historical drama film written and directed by Werner Herzog. Klaus Kinski stars in the title role. The soundtrack was composed and performed by West German progressive/Krautrock band Popol Vuh. The story follows the travels of Spanish soldier Lope de Aguirre, who leads a group of conquistadores down the Amazon River in South America in search of the legendary city of gold, El Dorado.",
     length: 95,
     poster: "aguirre.jpg",
@@ -176,49 +176,36 @@ function showMoreMovie(movieNumber){
   for (var i = 0; i < singleMovie.directors.length; i++) {
     document.getElementById("movieDirectors").innerHTML += "<li class = 'list-inline-item'>" + singleMovie.directors[i] + "</li>";
   }
-  // genres
-  document.getElementById("movieGenre").innerHTML = "";
-
-  var genreColor;
-
-  if (singleMovie.genre[i] == "Historical") {
-    genreColor = "badge-primary";
-  } else if (singleMovie.genre[i] == "Documentary"){
-    genreColor = "badge-success";
-  }
-
-  for (var i = 0; i < singleMovie.genre.length; i++) {
-    document.getElementById("movieGenre").innerHTML += "<span class = 'badge badge-pill " + genreColor + " mx-1'>" + singleMovie.genre[i] + "</span>";
-  }
-
-
-
-
-
-
-
-
-
-  // bio
+    // bio
   document.getElementById("movieBio").innerText = singleMovie.bio;
   // length
   document.getElementById("movieLength").innerText = singleMovie.length;
   // genre(s)
-  // for (var j = 0; j < singleMovie.genre.length; j++) {
-  //
-  // var genreColor;
-  //
-  // if (singleMovie.genre[j] === "Historical") {
-  //     genreColor = "badge-primary";
-  //   } else if(singleMovie.genre[j] === "Documentary") {
-  //     genreColor = "badge-success";
-  //   }
-  //
-  //
-  // console.log(singleMovie.genre);
-  // document.getElementById("movieGenre").innerHTML += "<li class = 'list-inline-item'>" + singleMovie.genre[j] + "</li>";
-  //
-  // }
+  document.getElementById("movieGenre").innerHTML = "";
+
+  var genreColor = "";
+
+  for (var i = 0; i < singleMovie.genre.length; i++) {
+    if (singleMovie.genre[i] == "Historical") {
+      genreColor = "badge-primary";
+    } else if (singleMovie.genre[i] == "Documentary"){
+      genreColor = "badge-success";
+    } else if (singleMovie.genre[i] == "Psychological"){
+      genreColor = "badge-secondary";
+    } else if (singleMovie.genre[i] == "Sports"){
+      genreColor = "badge-warning";
+    } else if (singleMovie.genre[i] == "Language"){
+      genreColor = "badge-danger";
+    } else if (singleMovie.genre[i] == "Cattle"){
+      genreColor = "badge-info";
+    } else if (singleMovie.genre[i] == "German Idealism"){
+      genreColor = "badge-light";
+    } else {
+      genreColor = "badge-dark";
+    }
+
+    document.getElementById("movieGenre").innerHTML += "<span class = 'badge badge-pill " + genreColor + " mx-1'>" + singleMovie.genre[i] + "</span>";
+  }
 
   // load the contents first, then render it, so it all displays at the same time!
   document.getElementById("overlay").style.display = "flex";
