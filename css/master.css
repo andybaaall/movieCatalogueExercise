@@ -23,8 +23,8 @@ body , html {
 
 }
   .overlayContent {
-    width: 60vw;
-    height: 40vh;
+    width: 80vw;
+    height: 70vh;
     background-color: white;
     padding: 1rem;
     position: relative;
