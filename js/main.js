@@ -114,7 +114,7 @@ var movies = [
     title: "Beyond the Thunderdome",
     year: 1985,
     directors: ["George Miller" , "George Ogilvie"],
-    bio: "Epoch-marking, genre-defining, this is definitely the best thing that has ever come out of that Godforsaken land down Under. After being exiled from the most advanced town in post apocalyptic Australia, a drifter travels with a group of abandoned children to rebel against the town's queen.",
+    bio: "Epoch-marking, genre-defining, this is definitely the best thing that has ever come out of that Godforsaken land down Under. Mel Gibson rolls around the desert in a cool car; Tina Turner attempts to gladiator-kill him with a chainsaw, which is awesome, and then there's a weird ending where he adopts a bunch of feral kids? CW: maybe a little bit racist.",
     movieLength: 104,
     poster: "beyondThunderdome.jpg",
     genre: ["Guzzoline" , "Heavy Metal" , "Tina Turner" , "Ford XB GT Coupé 'V8 Interceptor'"]
