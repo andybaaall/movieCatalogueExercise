@@ -5,7 +5,7 @@ var movies = [
     year: 1972,
     directors: ["Werner Herzog"],
     bio: "Aguirre, the Wrath of God (German: Aguirre, der Zorn Gottes), known in the UK as Aguirre, Wrath of God, is a 1972 West German epic historical drama film written and directed by Werner Herzog. Klaus Kinski stars in the title role. The soundtrack was composed and performed by West German progressive/Krautrock band Popol Vuh. The story follows the travels of Spanish soldier Lope de Aguirre, who leads a group of conquistadores down the Amazon River in South America in search of the legendary city of gold, El Dorado.",
-    length: 95,
+    movieLength: 95,
     poster: "aguirre.jpg",
     genre: ["Historical" , "Psychological" , "True Story"]
   },
@@ -15,7 +15,7 @@ var movies = [
     year: 1974,
     directors: ["Werner Herzog"],
     bio: "The Great Ecstasy of Woodcarver Steiner (German: Die große Ekstase des Bildschnitzers Steiner) is a 1974 documentary film by German filmmaker Werner Herzog. It is about Walter Steiner, a celebrated ski jumper of his era who worked as a carpenter for his full-time occupation. Showcased is Steiner's quest for a world record in ski flying, as well as the dangers involved in the sport. Herzog has called it 'one of my most important films'.",
-    length: 45,
+    movieLength: 45,
     poster: "theGreatEcstasy.jpg",
     genre: ["Documentary" , "Sports" , "Woodwork"]
   },
@@ -23,9 +23,9 @@ var movies = [
     id: 3,
     title: "The Enigma of Kaspar Hauser",
     year: 1974,
-    directors: ["Werner Herzog"],
+    directors: ["Werner Herzog" , "Werner 2" , "Werner 3"],
     bio: "The Enigma of Kaspar Hauser (German: Jeder für sich und Gott gegen alle; lit. Every Man for Himself and God Against All) is a 1974 West German drama film written and directed by Werner Herzog and starring Bruno Schleinstein (credited as Bruno S.) and Walter Ladengast. The film closely follows the real story of foundling Kaspar Hauser, using the text of actual letters found with Hauser.",
-    length: 105,
+    movieLength: 105,
     poster: "kasparHauser.jpg",
     genre: ["Documentary" , "Historical"]
   },
@@ -35,19 +35,89 @@ var movies = [
     year: 1976,
     directors: ["Werner Herzog"],
     bio: "How Much Wood Would a Woodchuck Chuck (German: Beobachtungen zu einer neuen Sprache, literally 'Observations of a New Language') is a 1976 documentary film by German director Werner Herzog, produced by Werner Herzog Filmproduktion. It is a 44-minute film documenting the World Livestock Auctioneer Championship held in New Holland, Pennsylvania. The film also contains a section about the Amish and shows Amish speaking Pennsylvania German.",
-    length: 44,
+    movieLength: 44,
     poster: "4Shorts.jpg",
     genre: ["Documentary" , "Language" , "Cattle"]
   },
   {
     id: 5,
-    title: "Heart of Glass ",
+    title: "Heart of Glass",
     year: 1976,
     directors: ["Werner Herzog"],
     bio: "Heart of Glass (German: Herz aus Glas) is a 1976 German film directed and produced by Werner Herzog, set in 18th century Bavaria. The film was written by Herzog, based partly on a story by Herbert Achternbusch. The main character is Hias, based on the legendary Bavarian prophet Mühlhiasl.",
-    length: 94,
+    movieLength: 94,
     poster: "heartOfGlass.jpg",
     genre: ["Documentary" , "German Idealism" , "Aching Nostalgia"]
+  },
+  {
+    id: 6,
+    title: "Meeting Gorbachev",
+    year: 2018,
+    directors: ["Werner Herzog" , "André Singer"],
+    bio: "Meeting Gorbachev is a 2018 biographical documentary film directed by Werner Herzog and André Singer about the life of Mikhail Gorbachev, the eighth and last leader of the Soviet Union. The film features three interviews between Herzog and Gorbachev, conducted over the span of six months, and had its world premiere at the Telluride Film Festival on September 1, 2018.",
+    movieLength: 90,
+    poster: "meetingGorbachev.jpg",
+    genre: ["Documentary" , "Psychological" , "Aching Nostalgia"]
+  },
+  {
+    id: 7,
+    title: "My Son, My Son, What Have Ye Done",
+    year: 2009,
+    directors: ["Werner Herzog"],
+    bio: "My Son, My Son, What Have Ye Done? is a 2009 American-German film directed by Werner Herzog and produced by David Lynch, inspired by the story of murderer Mark Yavorsky.[2][5] Herzog describes the film as 'a horror film without the blood, chainsaws and gore, but with a strange, anonymous fear creeping up in you.' The film is an international co-production between the United States and Germany.",
+    movieLength: 91,
+    poster: "mySonMySon.jpg",
+    genre: ["True Story" , "Psychological" , "Tragedy"]
+  },
+  {
+    id: 8,
+    title: "Woyzeck",
+    year: 1979,
+    directors: ["Werner Herzog"],
+    bio: "Woyzeck is a 1979 German drama film written, produced and directed by Werner Herzog and starring Klaus Kinski and Eva Mattes. It is an adaptation of the unfinished play Woyzeck by German dramatist Georg Büchner.",
+    movieLength: 82,
+    poster: "woyzeck.jpeg",
+    genre: ["Historical" , "Tragedy" , "Adaptation"]
+  },
+  {
+    id: 9,
+    title: "Invincible",
+    year: 1979,
+    directors: ["Werner Herzog"],
+    bio: "2001 drama film written and directed by Werner Herzog. The film stars Tim Roth, Jouko Ahola, Anna Gourari, and Max Raabe. The film tells the story of a Jewish strongman in Germany. While basing his story on the real-life figure Zishe Breitbart (a.k.a. Siegmund Breitbart), Herzog uses the bare facts of Breitbart's life to weave fact and fiction (e.g., the story is set in 1932 Berlin, a full seven years after Breitbart's death in 1925) to create an allegory of human strength, knowing oneself with honesty and pride in one's heritage.",
+    movieLength: 134,
+    poster: "invincible.jpg",
+    genre: ["True Story" , "Historical"]
+  },
+  {
+    id: 10,
+    title: "Grizzly Man",
+    year: 2005,
+    directors: ["Werner Herzog"],
+    bio: "A devastating and heart-rending take on grizzly bear activists Timothy Treadwell and Amie Huguenard, who were killed in October of 2003 while living among grizzly bears in Alaska.",
+    movieLength: 104,
+    poster: "grizzlyMan.jpg",
+    genre: ["Documentary" , "Bears"]
+  },
+  {
+    id: 11,
+    title: "Cave of Forgotten Dreams",
+    year: 2005,
+    directors: ["Werner Herzog"],
+    bio: "In 1994, a group of scientists discovered a cave in Southern France perfectly preserved for over 20,000 years and containing the earliest known human paintings. Knowing the cultural significance that the Chauvet Cave holds, the French government immediately cut-off all access to it, save a few archaeologists and paleontologists. But documentary filmmaker, Werner Herzog, has been given limited access, and now we get to go inside examining beautiful artwork created by our ancient ancestors around 32,000 years ago.",
+    movieLength: 95,
+    poster: "caveOfForgottenDreams.jpg",
+    genre: ["Documentary" , "Bears"]
+  },
+  {
+    id: 12,
+    title: "Beyond the Thunderdome",
+    year: 1985,
+    directors: ["George Miller" , "George Ogilvie"],
+    bio: "Epoch-marking, genre-defining, this is definitely the best thing that has ever come out of that Godforsaken land down Under. After being exiled from the most advanced town in post apocalyptic Australia, a drifter travels with a group of abandoned children to rebel against the town's queen.",
+    movieLength: 104,
+    poster: "beyondThunderdome.jpg",
+    genre: ["Guzzoline" , "Heavy Metal" , "Tina Turner" , "Ford XB GT Coupé 'V8 Interceptor'"]
   }
 ];
 
@@ -78,26 +148,24 @@ for (var i = 0; i < movies.length; i++) {
 
 //here's another way we can do this (still using innerHTML, but this time in a variable):
 //------------------------------------------------------------------------------------------------------------------------------------
-    var genreClass = "";
+    // var genreClass = "";
+    //
+    // if(movie.genre[0] === "Historical"){
+    // genreClass = "border-primary";
+    // // and we could store more variables here, like 'var genreContents = "this is a heist movie"'
+    // } else if (movie.genre[0] === "Documentary") {
+    //   genreClass = "border-success";
+    //   // maybe something like 'var genreContents = "this is a seige movie"'
+    //   // or even other styles, like 'background-color: $actionMovie;'
+    // }
 
-    if(movie.genre[0] === "Historical"){
-    genreClass = "border-primary";
-    // and we could store more variables here, like 'var genreContents = "this is a heist movie"'
-    } else if (movie.genre[0] === "Documentary") {
-      genreClass = "border-success";
-      // maybe something like 'var genreContents = "this is a seige movie"'
-      // or even other styles, like 'background-color: $actionMovie;'
-    }
+    var genreColor = getGenreColor(movie.genre[0]); // [0] because we want the 'primary' genre
 
-    // on else and else if: if you've got more than two conditions -- or in this case, potential conditions -- you need to be using
-    // 'else if' to specify another possible outcome. When you're done listing potential conditions, you need to be using
-    // 'else' to cover any conditions not covered by your initial 'if' and subsequent 'else if's
-
-    var movieCard = "<div class='col-12 col-sm-6 col-md-3' m-b-3 text-center>";
+    var movieCard = "<div class='col-12 col-sm-6 col-md-3 m-b-3 mb-3'>";
           // onclick lives here:
-          movieCard += "<div class = 'card movieThumb " + genreClass + " ' onclick='showMoreMovie(" + movie.id + ");'>";
+          movieCard += "<div class = 'card movieThumb h-100 text-center border-" + genreColor + " ' onclick='showMoreMovie(" + movie.id + ");'>";
           // movieCard += "<div class = 'card movieThumb movieThumb2 " + genreClass + " ' data-id='" + movie.id + "' >";
-            movieCard += "  <img src='images/posters/" + movie.poster + "' class='card-img-top' alt=''>"
+            movieCard += "  <img src='images/posters/" + movie.poster + "' class='card-img-top cardImgHeight' alt=''>"
             movieCard += "<div class = 'card-body'>";
               movieCard += "<h5 class = 'card-title'>" + movie.title + "</h5>";
             movieCard += "</div>";
@@ -142,7 +210,7 @@ for (var i = 0; i < movies.length; i++) {
 }
 
 // -----------------------------------------------------------------------------------------------------------------------------------
-// opening and closing the overlay, and rendering its content
+// opening the overlay, and rendering its content
 // -----------------------------------------------------------------------------------------------------------------------------------
 
 function showMoreMovie(movieNumber){
@@ -152,8 +220,6 @@ function showMoreMovie(movieNumber){
   for (var i = 0; i < movies.length; i++) {
 
     if(movies[i].id === movieNumber){
-      // movieNumber is what we're using to stand in for whatever we're passing in
-      // which is going to be movie.id (or movies[i].id)
       // console.log(movies[i]);
       singleMovie = movies[i];
       break;
@@ -179,32 +245,33 @@ function showMoreMovie(movieNumber){
     // bio
   document.getElementById("movieBio").innerText = singleMovie.bio;
   // length
-  document.getElementById("movieLength").innerText = singleMovie.length;
+  document.getElementById("movieLength").innerText = singleMovie.movieLength;
   // genre(s)
   document.getElementById("movieGenre").innerHTML = "";
 
-  var genreColor = "";
 
   for (var i = 0; i < singleMovie.genre.length; i++) {
-    if (singleMovie.genre[i] == "Historical") {
-      genreColor = "badge-primary";
-    } else if (singleMovie.genre[i] == "Documentary"){
-      genreColor = "badge-success";
-    } else if (singleMovie.genre[i] == "Psychological"){
-      genreColor = "badge-secondary";
-    } else if (singleMovie.genre[i] == "Sports"){
-      genreColor = "badge-warning";
-    } else if (singleMovie.genre[i] == "Language"){
-      genreColor = "badge-danger";
-    } else if (singleMovie.genre[i] == "Cattle"){
-      genreColor = "badge-info";
-    } else if (singleMovie.genre[i] == "German Idealism"){
-      genreColor = "badge-light";
-    } else {
-      genreColor = "badge-dark";
-    }
+    var genreColor = getGenreColor(singleMovie.genre[i]);
 
-    document.getElementById("movieGenre").innerHTML += "<span class = 'badge badge-pill " + genreColor + " mx-1'>" + singleMovie.genre[i] + "</span>";
+  //   if (singleMovie.genre[i] == "Historical") {
+  //     genreColor = "badge-primary";
+  //   } else if (singleMovie.genre[i] == "Documentary"){
+  //     genreColor = "badge-success";
+  //   } else if (singleMovie.genre[i] == "Psychological"){
+  //     genreColor = "badge-secondary";
+  //   } else if (singleMovie.genre[i] == "Sports"){
+  //     genreColor = "badge-warning";
+  //   } else if (singleMovie.genre[i] == "Language"){
+  //     genreColor = "badge-danger";
+  //   } else if (singleMovie.genre[i] == "Cattle"){
+  //     genreColor = "badge-info";
+  //   } else if (singleMovie.genre[i] == "German Idealism"){
+  //     genreColor = "badge-light";
+  //   } else {
+  //     genreColor = "badge-dark";
+    // }
+
+    document.getElementById("movieGenre").innerHTML += "<span class = 'badge badge-pill badge-" + genreColor + " mx-1'>" + singleMovie.genre[i] + "</span>";
   }
 
   // load the contents first, then render it, so it all displays at the same time!
@@ -213,7 +280,7 @@ function showMoreMovie(movieNumber){
 }
 
 
-// movieThumb2 method ---------------------------------------------------------------------------------------------------------------
+// movieThumb2 method (applies onClick) ----------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -237,7 +304,7 @@ for (var i = 0; i < movieThumbnails.length; i++) {
   }
 }
 
-// close button  ---------------------------------------------------------------------------------------------------------------------
+// close button for the overlay   ----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -245,3 +312,53 @@ document.getElementById("close").onclick = function(){
   document.getElementById("overlay").style.display = "none";
   document.body.style.overflow = "scroll";
 }
+
+// genre color function --------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------------------------
+
+// movies.genre = "Historical";
+// // substituting in today for movies.genre[i], because we're not in a loop rn
+//
+// function getGenreColor(){
+//   var genreColor;
+//   if (movies.genre == "Historical") {
+//     genreColor = "primary";
+//   } else if (movies.genre == "Documentary"){
+//     genreColor = "badge-success";
+//   } else if (movies.genre == "Psychological"){
+//     genreColor = "badge-secondary";
+//   } else if (movies.genre == "Sports"){
+//     genreColor = "badge-warning";
+//   } else if (movies.genre == "Language"){
+//     genreColor = "badge-danger";
+//   } else if (movies.genre == "Cattle"){
+//     genreColor = "badge-info";
+//   } else if (movies.genre == "German Idealism"){
+//     genreColor = "badge-light";
+//   } else {
+//     genreColor = "badge-dark";
+//   }
+//   return genreColor;
+// }
+// console.log('oh sweaty u were so close! so smart to get so close!')
+
+
+function getGenreColor(genre){
+  if (genre == "Historical") {
+      return "primary";
+    } else if (genre == "Documentary"){
+      return "secondary";
+    } else if (genre == "Psychological"){
+      return "success";
+    } else if (genre == "Sports"){
+      return "warning";
+    } else if (genre == "Language"){
+      return "danger";
+    } else if (genre == "Cattle"){
+      return "info";
+    } else if (genre == "German Idealism"){
+      return "light";
+    } else {
+      return "dark";
+    }
+  }
