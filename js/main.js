@@ -148,23 +148,23 @@ for (var i = 0; i < movies.length; i++) {
 
 //here's another way we can do this (still using innerHTML, but this time in a variable):
 //------------------------------------------------------------------------------------------------------------------------------------
-    // var genreClass = "";
-    //
-    // if(movie.genre[0] === "Historical"){
-    // genreClass = "border-primary";
-    // // and we could store more variables here, like 'var genreContents = "this is a heist movie"'
-    // } else if (movie.genre[0] === "Documentary") {
-    //   genreClass = "border-success";
-    //   // maybe something like 'var genreContents = "this is a seige movie"'
-    //   // or even other styles, like 'background-color: $actionMovie;'
-    // }
+    var genreClass = "";
+
+    if(movie.genre[0] === "Historical"){
+    genreClass = "border-primary";
+    // and we could store more variables here, like 'var genreContents = "this is a heist movie"'
+    } else if (movie.genre[0] === "Documentary") {
+      genreClass = "border-success";
+      // maybe something like 'var genreContents = "this is a seige movie"'
+      // or even other styles, like 'background-color: $actionMovie;'
+    }
 
     var genreColor = getGenreColor(movie.genre[0]); // [0] because we want the 'primary' genre
 
     var movieCard = "<div class='col-12 col-sm-6 col-md-3 m-b-3 mb-3'>";
           // onclick lives here:
-          movieCard += "<div class = 'card movieThumb h-100 text-center border-" + genreColor + " ' onclick='showMoreMovie(" + movie.id + ");'>";
-          // movieCard += "<div class = 'card movieThumb movieThumb2 " + genreClass + " ' data-id='" + movie.id + "' >";
+          // movieCard += "<div class = 'card movieThumb h-100 text-center border-" + genreColor + " ' onclick='showMoreMovie(" + movie.id + ");'>";
+          movieCard += "<div class = 'card movieThumb movieThumb2 " + genreClass + " ' data-id='" + movie.id + "' >";
             movieCard += "  <img src='images/posters/" + movie.poster + "' class='card-img-top cardImgHeight' alt=''>"
             movieCard += "<div class = 'card-body'>";
               movieCard += "<h5 class = 'card-title'>" + movie.title + "</h5>";
