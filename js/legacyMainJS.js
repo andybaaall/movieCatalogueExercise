@@ -132,179 +132,113 @@ var movies = [
 ];
 
 // -----------------------------------------------------------------------------------------------------------------------------------
-// global variables
+// RENDERING THE MOVIE CARDS' CONTENT
 // -----------------------------------------------------------------------------------------------------------------------------------
 
-var maxNumberOnScreen = 4;
-var numberOfPages = Math.ceil(movies.length / maxNumberOnScreen);
-var pageContainer = document.getElementById('pageContainer');
 
-var pageTabs = document.getElementsByClassName('page-tab');
-var currentTab = "Movies";
+// console.log(movies);
+var moviesList = document.getElementById("moviesList");
 
-// toggles active and inner HTML for the movies/directors tabs
-for (var i = 0; i < pageTabs.length; i++) {
-  pageTabs[i].onclick = function(){
-      // console.log("You have clicked on a tab");
-      for (var j = 0; j < pageTabs.length; j++) {
-          if(pageTabs[j].classList.contains('active')){
-              pageTabs[j].classList.remove('active');
-              break;
-          }
-      }
-      if(!this.classList.contains('active')){
-          this.classList.add('active');
-      }
-      // console.log(this.innerText);
-      changeTab(this.innerText);
-      // console.log(this.classList);
-      // this.classList.add('newClass', 'secondNewClass');
-      // console.log(this.classList.contains('active'));
-      // console.log(this.classList.item(0));
-      // this.classList.remove('active');
-      // this.classList.toggle('active');
-  };
-}
+for (var i = 0; i < movies.length; i++) {
+  // console.log(movies[i]);
+  var movie = movies[i];
+  // console.log(movie.title);
+  // document.getElementById("moviesList").innerHTML += "<p>" + movie.title + "</p>"
+  // (bootstrap wants <p> tags to display as flex, so it gets pretty weird)
 
-// determines genre colour
-function getGenreColor(genre){
-  if (genre == "Historical") {
-      return "primary";
-    } else if (genre == "Documentary"){
-      return "secondary";
-    } else if (genre == "Psychological"){
-      return "success";
-    } else if (genre == "Sports"){
-      return "warning";
-    } else if (genre == "Language"){
-      return "danger";
-    } else if (genre == "Cattle"){
-      return "info";
-    } else if (genre == "German Idealism"){
-      return "light";
-    } else {
-      return "dark";
-    }
-  }
+//here's one way we can do this: -----------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------
+  // moviesList.innerHTML += "<div class='col-12 col-sm-6 col-md-4'>";
+  //   // this won't work if you don't use +=
+  //   moviesList.innerHTML += "<div class='card'>";
+  //   // wait just one minute! JS now closes open HTML tags that you create using the innerHTML property, so we can't nest like this
+  //   // at least not on the latest version of Chrome
+  //   moviesList.innerHTML += "</div>";
+  // moviesList.innerHTML += "</div>";
 
-showMovies();
-
-// -----------------------------------------------------------------------------------------------------------------------------------
-// global functions
-// -----------------------------------------------------------------------------------------------------------------------------------
-
-// puts the movie cards into pageContainer
-function showMovieThumbnails(start, end){
-  for (var i = start; i < end; i++) {
-    var movie = movies[i];
-
+//here's another way we can do this (still using innerHTML, but this time in a variable):
+//------------------------------------------------------------------------------------------------------------------------------------
     var genreClass = "";
 
     if(movie.genre[0] === "Historical"){
     genreClass = "border-primary";
+    // and we could store more variables here, like 'var genreContents = "this is a heist movie"'
     } else if (movie.genre[0] === "Documentary") {
       genreClass = "border-success";
+      // maybe something like 'var genreContents = "this is a seige movie"'
+      // or even other styles, like 'background-color: $actionMovie;'
     }
 
     var genreColor = getGenreColor(movie.genre[0]); // [0] because we want the 'primary' genre
 
-    var movieCard = '<div class="col-12 col-sm-6 col-md-3 mb-3 text-center">';
-        movieCard += '<div class="movieThumb movieThumb2 card h-100 ' + genreClass + '" data-id="' + movie.id + '">';
-            movieCard += '<img src="images/posters/' + movie.poster + '" class="card-img-top" alt="">';
-            movieCard += '<div class="card-body">';
-                movieCard += '<h5 class="card-title">' + movie.title + '</h5>';
-            movieCard += '</div>';
-        movieCard += '</div>';
-    movieCard += '</div>';
+    var movieCard = "<div class='col-12 col-sm-6 col-md-3 m-b-3 mb-3'>";
+          // onclick lives here:
+          // movieCard += "<div class = 'card movieThumb h-100 text-center border-" + genreColor + " ' onclick='showMoreMovie(" + movie.id + ");'>";
+          movieCard += "<div class = 'card movieThumb movieThumb2 " + genreClass + " ' data-id='" + movie.id + "' >";
+            movieCard += "  <img src='images/posters/" + movie.poster + "' class='card-img-top cardImgHeight' alt=''>"
+            movieCard += "<div class = 'card-body'>";
+              movieCard += "<h5 class = 'card-title'>" + movie.title + "</h5>";
+            movieCard += "</div>";
+          movieCard += "</div>";
+        movieCard += "</div>";
 
-    document.getElementById('moviesList').innerHTML += movieCard;
- }
+    moviesList.innerHTML += movieCard;
+    // console.log(movieCard); // this basically generates a giant string
 
- // applies onclick for overlay to movie thumbails
+//and here's yet another way we can do this: -----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------
+  // var columns = document.createElement("div");
+  // var columnsAttr = document.createAttribute("class");
+  // columnsAttr.value = "col-12 col-sm-6 col-md-4";
+  // columns.setAttributeNode(columnsAttr);
+  //
+  // var card = document.createElement("card");
+  // var cardAttr = document.createAttribute("class");
+  // cardAttr.value = "card";
+  // card.setAttributeNode(cardAttr);
+  //
+  // var cardBody = document.createElement("div");
+  // var cardBodyAttr = document.createAttribute("class");
+  // cardBodyAttr.value = "card-body";
+  // cardBody.setAttributeNode(cardBodyAttr);
+  //
+  // var cardTitle = document.createElement("h5");
+  // var cardTitleAttr = document.createAttribute("class");
+  // cardTitleAttr.value = "card-title";
+  // cardTitle.setAttributeNode(cardTitleAttr);
+  //
+  // var cardTitleText = document.createTextNode(movie.title);
+  // cardTitle.appendChild(cardTitleText);
+  //
+  // cardTitle.appendChild(cardTitleText);
+  // cardBody.appendChild(cardTitle);
+  // card.appendChild(cardBody);
+  // columns.appendChild(card);
+  // moviesList.appendChild(columns);
 
-   var movieThumbnails = document.getElementsByClassName("movieThumb2");
-
-    for (var j = 0; j < movieThumbnails.length; j++) {
-     movieThumbnails[j].onclick = function(){
-       var id = parseInt(this.dataset.id);
-       showMoreMovie(id);
-
-     }
-  }
+  // so we're creating elements with createElement, giving them attributes with createAttribute and setAttributeNode, and then nesting them inside existing elements using appendChild.
 }
 
-// shows all movie content
-function showMovies(){
-
-  if(maxNumberOnScreen > movies.length){
-    showMovieThumbnails(0, movies.length);
-  } else {
-    showMovieThumbnails(0, maxNumberOnScreen);
-  }
-
-  if(numberOfPages > 1){
-    var pagination = document.getElementById('paginationMovies');
-    for (var i = 0; i < numberOfPages; i++) {
-      var pageNumber = i + 1;
-      pagination.innerHTML += '<li class="page-item" onclick="paginationClick(' + pageNumber + ');"><a class="page-link" href="#">'+ pageNumber +'</a></li>';
-    }
-  }
-}
-
-// adds functionality to the pagination
-function paginationClick(a){
-  var start;
-  var end;
-
-  start = (a-1) * maxNumberOnScreen;
-
-  if (movies.length < (a * maxNumberOnScreen)) {
-    end = movies.length;
-  } else {
-    end = a * maxNumberOnScreen;
-  }
-
-  document.getElementById('moviesList').innerHTML = "";
-  showMovieThumbnails(start, end);
-}
-
-
-function changeTab(tabName){
-  if(currentTab === tabName){
-      // console.log('you are still on the same page');
-  } else {
-      currentTab = tabName;
-      pageContainer.innerHTML = '';
-      // console.log('Change to the ' + tabName + ' page');
-
-        if (currentTab === 'Movies') {
-          pageContainer.innerHTML = '<div id="moviesList" class="row"></div>';
-          pageContainer.innerHTML += '<div class="row"><div class="col"><nav><ul id="paginationMovies" class="pagination justify-content-end"></ul></nav></div></div>';
-          showMovies();
-        } else {
-          pageContainer.innerHTML = '<div id="directorsList" class="row"></div>';
-          pageContainer.innerHTML += '<div class="row"><div class="col"><nav><ul id="paginationMovies" class="pagination justify-content-end"></ul></nav></div></div>';
-          // showDirectors();
-        }
-  }
-}
-
-// controls the overlay
+// -----------------------------------------------------------------------------------------------------------------------------------
+// opening the overlay, and rendering its content
+// -----------------------------------------------------------------------------------------------------------------------------------
 
 function showMoreMovie(movieNumber){
-
+  var singleMovie;
   // console.log(movieNumber);
 
   for (var i = 0; i < movies.length; i++) {
 
     if(movies[i].id === movieNumber){
       // console.log(movies[i]);
-      var singleMovie = movies[i];
+      singleMovie = movies[i];
       break;
       // wheras return gets us out of a function, break stops a loop. Nothing will run after you tell a loop to break
       // ... good thing we redefined singleMovie before we broke our loop!
     }
   }
+  // console.log(singleMovie);
+  // console.log(singleMovie.title);
 
   // poster
   document.getElementById("posterImage").src = "images/posters/" + singleMovie.poster;
@@ -329,32 +263,112 @@ function showMoreMovie(movieNumber){
   for (var i = 0; i < singleMovie.genre.length; i++) {
     var genreColor = getGenreColor(singleMovie.genre[i]);
 
-    if (singleMovie.genre[i] == "Historical") {
-      genreColor = "primary";
-    } else if (singleMovie.genre[i] == "Documentary"){
-      genreColor = "success";
-    } else if (singleMovie.genre[i] == "Psychological"){
-      genreColor = "secondary";
-    } else if (singleMovie.genre[i] == "Sports"){
-      genreColor = "warning";
-    } else if (singleMovie.genre[i] == "Language"){
-      genreColor = "danger";
-    } else if (singleMovie.genre[i] == "Cattle"){
-      genreColor = "info";
-    } else if (singleMovie.genre[i] == "German Idealism"){
-      genreColor = "light";
-    } else {
-      genreColor = "dark";
-    }
+  //   if (singleMovie.genre[i] == "Historical") {
+  //     genreColor = "badge-primary";
+  //   } else if (singleMovie.genre[i] == "Documentary"){
+  //     genreColor = "badge-success";
+  //   } else if (singleMovie.genre[i] == "Psychological"){
+  //     genreColor = "badge-secondary";
+  //   } else if (singleMovie.genre[i] == "Sports"){
+  //     genreColor = "badge-warning";
+  //   } else if (singleMovie.genre[i] == "Language"){
+  //     genreColor = "badge-danger";
+  //   } else if (singleMovie.genre[i] == "Cattle"){
+  //     genreColor = "badge-info";
+  //   } else if (singleMovie.genre[i] == "German Idealism"){
+  //     genreColor = "badge-light";
+  //   } else {
+  //     genreColor = "badge-dark";
+    // }
 
     document.getElementById("movieGenre").innerHTML += "<span class = 'badge badge-pill badge-" + genreColor + " mx-1'>" + singleMovie.genre[i] + "</span>";
   }
+
+  // load the contents first, then render it, so it all displays at the same time!
   document.getElementById("overlay").style.display = "flex";
   document.body.style.overflow = "hidden";
 }
 
-  // closes the overlay
-  document.getElementById("close").onclick = function(){
-    document.getElementById("overlay").style.display = "none";
-    document.body.style.overflow = "scroll";
+
+// movieThumb2 method (applies onClick) ----------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------------------------
+
+
+var movieThumbnails = document.getElementsByClassName("movieThumb2");
+
+for (var i = 0; i < movieThumbnails.length; i++) {
+  // console.log(movieThumbnails[i]);
+  // console.log(movieThumbnails[i].dataset);    // the HTML dataset object is freakin' cool
+  // console.log(movieThumbnails[i].dataset.id);
+
+  // var id = parseInt(movieThumbnails[i].dataset.id);
+  // console.log(id);
+
+  // movieThumbnails[i].onclick = showMoreMovie;
+    // we omit the brackets because we're calling a function that's bound to an event handler. Who can say why.
+
+  movieThumbnails[i].onclick = function(){
+    var id = parseInt(this.dataset.id);
+    showMoreMovie(id);
+    console.log(id);
+  }
+}
+
+// close button for the overlay   ----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------------------------
+
+
+document.getElementById("close").onclick = function(){
+  document.getElementById("overlay").style.display = "none";
+  document.body.style.overflow = "scroll";
+}
+
+// genre color function --------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------------------------
+
+// movies.genre = "Historical";
+// // substituting in today for movies.genre[i], because we're not in a loop rn
+//
+// function getGenreColor(){
+//   var genreColor;
+//   if (movies.genre == "Historical") {
+//     genreColor = "primary";
+//   } else if (movies.genre == "Documentary"){
+//     genreColor = "badge-success";
+//   } else if (movies.genre == "Psychological"){
+//     genreColor = "badge-secondary";
+//   } else if (movies.genre == "Sports"){
+//     genreColor = "badge-warning";
+//   } else if (movies.genre == "Language"){
+//     genreColor = "badge-danger";
+//   } else if (movies.genre == "Cattle"){
+//     genreColor = "badge-info";
+//   } else if (movies.genre == "German Idealism"){
+//     genreColor = "badge-light";
+//   } else {
+//     genreColor = "badge-dark";
+//   }
+//   return genreColor;
+// }
+// console.log('oh sweaty u were so close! so smart to get so close!')
+
+
+function getGenreColor(genre){
+  if (genre == "Historical") {
+      return "primary";
+    } else if (genre == "Documentary"){
+      return "secondary";
+    } else if (genre == "Psychological"){
+      return "success";
+    } else if (genre == "Sports"){
+      return "warning";
+    } else if (genre == "Language"){
+      return "danger";
+    } else if (genre == "Cattle"){
+      return "info";
+    } else if (genre == "German Idealism"){
+      return "light";
+    } else {
+      return "dark";
+    }
   }
