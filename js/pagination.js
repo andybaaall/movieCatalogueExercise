@@ -169,6 +169,12 @@ function showMovieThumbnails(start, end){
 
         document.getElementById('moviesList').innerHTML += movieCard;
     }
+
+    // onclick event for showMoreMovie appears here, so that it's loaded each time we render new movies
+    // otherwise, it only loads once - on page load - and 'disappears' when we clear our div and try to render it again
+
+    // this is some really important global / local scope stuff! do we want stuff to happen more than once? if so, it's almost
+    // certainly going to be initialised on load, then cleared, then reset by a trigger which invokes a function
 }
 
 function paginationClick(a){
@@ -176,11 +182,7 @@ function paginationClick(a){
   var start;
   var end;
 
-  if (a === 1){
-    start = 0;
-  } else {
-    var start = (a - 1) * maxNumberOnScreen;
-  }
+  start = (a-1) * maxNumberOnScreen;
 
   if (movies.length < (a * maxNumberOnScreen)) {
     end = movies.length;
@@ -190,4 +192,48 @@ function paginationClick(a){
 
   document.getElementById('moviesList').innerHTML = "";
   showMovieThumbnails(start, end);
+}
+
+
+// tabs for directors / movies
+// -------------------------------------------------------------------------------------
+
+var currentTab = "Movies";
+
+var pageTabs = document.getElementsByClassName('page-tab');
+for (var i = 0; i < pageTabs.length; i++) {
+    pageTabs[i].onclick = function(){
+        // console.log("You have clicked on a tab");
+        for (var j = 0; j < pageTabs.length; j++) {
+            if(pageTabs[j].classList.contains('active')){
+                pageTabs[j].classList.remove('active');
+                break;
+            }
+        }
+        if(!this.classList.contains('active')){
+            this.classList.add('active');
+        }
+        // console.log(this.innerText);
+        changeTab(this.innerText);
+        // console.log(this.classList);
+        // this.classList.add('newClass', 'secondNewClass');
+        // console.log(this.classList.contains('active'));
+        // console.log(this.classList.item(0));
+        // this.classList.remove('active');
+        // this.classList.toggle('active');
+    };
+}
+
+
+function changeTab(tabName){
+    if(currentTab === tabName){
+        console.log('you are still on the same page');
+    } else {
+        currentTab = tabName;
+        console.log('Change to the ' + tabName + ' page');
+
+
+        // Al our code needed to change the page
+
+    }
 }
