@@ -221,7 +221,6 @@ function showMovieThumbnails(start, end){
  }
 
  // applies onclick for overlay to movie thumbails
-
    var movieThumbnails = document.getElementsByClassName("movieThumb2");
 
     for (var j = 0; j < movieThumbnails.length; j++) {
@@ -251,6 +250,17 @@ function showMovies(){
   }
 }
 
+// shows all director content
+function showDirectors(){
+  var directorsList = document.getElementById('directorsList');
+
+  for (var i = 0; i < movies.length; i++) {
+    var directors = movies[i].directors;
+    return directors;
+  }
+  var directorsContainer = '<div class="col-12 col-sm-6 col-md-3 mb-3 text-center">'
+}
+
 // adds functionality to the pagination
 function paginationClick(a){
   var start;
@@ -268,7 +278,7 @@ function paginationClick(a){
   showMovieThumbnails(start, end);
 }
 
-
+// changes tab (shocker)
 function changeTab(tabName){
   if(currentTab === tabName){
       // console.log('you are still on the same page');
@@ -284,13 +294,12 @@ function changeTab(tabName){
         } else {
           pageContainer.innerHTML = '<div id="directorsList" class="row"></div>';
           pageContainer.innerHTML += '<div class="row"><div class="col"><nav><ul id="paginationMovies" class="pagination justify-content-end"></ul></nav></div></div>';
-          // showDirectors();
+          showDirectors();
         }
   }
 }
 
 // controls the overlay
-
 function showMoreMovie(movieNumber){
 
   // console.log(movieNumber);
