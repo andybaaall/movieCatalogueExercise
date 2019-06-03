@@ -132,7 +132,7 @@ var movies = [
 ];
 
 // -----------------------------------------------------------------------------------------------------------------------------------
-// global variables
+// global variables , functions
 // -----------------------------------------------------------------------------------------------------------------------------------
 
 var maxNumberOnScreen = 4;
@@ -327,7 +327,7 @@ function showMoreMovie(movieNumber){
   for (var i = 0; i < singleMovie.directors.length; i++) {
     document.getElementById("movieDirectors").innerHTML += "<li class = 'list-inline-item'>" + singleMovie.directors[i] + "</li>";
   }
-    // bio
+  // bio
   document.getElementById("movieBio").innerText = singleMovie.bio;
   // length
   document.getElementById("movieLength").innerText = singleMovie.movieLength;
@@ -360,10 +360,20 @@ function showMoreMovie(movieNumber){
   }
   document.getElementById("overlay").style.display = "flex";
   document.body.style.overflow = "hidden";
+
+
+  //watchlist button
+  
+
 }
 
-  // closes the overlay
-  document.getElementById("close").onclick = function(){
-    document.getElementById("overlay").style.display = "none";
-    document.body.style.overflow = "scroll";
-  }
+
+// closes the overlay
+document.getElementById("close").onclick = function(){
+document.getElementById("overlay").style.display = "none";
+document.body.style.overflow = "scroll";
+}
+
+
+// watchlist -- button defined in showMoreMovie()
+var watchlist = [];
